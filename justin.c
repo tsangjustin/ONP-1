@@ -1,3 +1,11 @@
+/*******************************************************************************
+ * Name        : ONP.c
+ * Author      : Michael Curry and Justin Tsang
+ * Version     : 1.0
+ * Date        : 2/16/2015
+ * Description : Print Reverse Polish Notation of input
+ * Pledge      : I pledge my honor that I have abided by the Stevens Honor System
+ ******************************************************************************/
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -6,7 +14,9 @@
 #define TRUE 1
 #define FALSE 0
 
-// If o1 has greater precedence return 1; else return 0
+// Checks if operator o2 has less precedence than o1
+// o1 is the next token in input
+// o2 is the char at top of stack
 int lessPrecedence(char o1, char o2) {
 	// Return 1 if o1 has greater precedence than o2
 	if ((o1 == '^') && (o2 != '^')) {
@@ -20,6 +30,8 @@ int lessPrecedence(char o1, char o2) {
 	return 0;
 }
 
+// Checks if the parameter, operator, is actually an operator
+// Return 0 if not operator; otherwise return 1
 int isOperator(char operator) {
 	if ((operator == '+') || (operator == '-') ||
 		(operator == '/') || (operator == '*') ||
@@ -31,7 +43,8 @@ int isOperator(char operator) {
 
 int main() {
 	int num_expressions;
-	scanf("%d\n", &num_expressions);
+	scanf("%d", &num_expressions);
+	getchar();
 	if (num_expressions > 100) {
 		num_expressions = 100;
 	}
