@@ -59,7 +59,9 @@ int main() {
             ++curr;
         }
         while(stackTop >= 0){
-            output[++outputTop] = stack[stackTop];
+            if (isOperator(stack[stackTop]) == 1){
+			output[++outputTop] = stack[stackTop];
+		}
             stackTop--;
         }
         --num;
